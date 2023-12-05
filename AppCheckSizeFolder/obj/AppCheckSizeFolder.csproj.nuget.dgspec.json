@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Developer\\ASP.NETc#\\AppCheckSizeFolder\\AppCheckSizeFolder\\AppCheckSizeFolder.csproj": {}
+    "E:\\Developer\\Folder-Size\\AppCheckSizeFolder\\AppCheckSizeFolder.csproj": {}
   },
   "projects": {
-    "E:\\Developer\\ASP.NETc#\\AppCheckSizeFolder\\AppCheckSizeFolder\\AppCheckSizeFolder.csproj": {
+    "E:\\Developer\\Folder-Size\\AppCheckSizeFolder\\AppCheckSizeFolder.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Developer\\ASP.NETc#\\AppCheckSizeFolder\\AppCheckSizeFolder\\AppCheckSizeFolder.csproj",
+        "projectUniqueName": "E:\\Developer\\Folder-Size\\AppCheckSizeFolder\\AppCheckSizeFolder.csproj",
         "projectName": "AppCheckSizeFolder",
-        "projectPath": "E:\\Developer\\ASP.NETc#\\AppCheckSizeFolder\\AppCheckSizeFolder\\AppCheckSizeFolder.csproj",
+        "projectPath": "E:\\Developer\\Folder-Size\\AppCheckSizeFolder\\AppCheckSizeFolder.csproj",
         "packagesPath": "C:\\Users\\11ProM\\.nuget\\packages\\",
-        "outputPath": "E:\\Developer\\ASP.NETc#\\AppCheckSizeFolder\\AppCheckSizeFolder\\obj\\",
+        "outputPath": "E:\\Developer\\Folder-Size\\AppCheckSizeFolder\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

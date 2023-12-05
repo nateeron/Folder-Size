@@ -13,7 +13,7 @@ namespace AppCheckSizeFolder
         {
             InitializeComponent();
         }
-
+        // Update
 
         private void GetTotalFolderSize(string folderPath)
         {

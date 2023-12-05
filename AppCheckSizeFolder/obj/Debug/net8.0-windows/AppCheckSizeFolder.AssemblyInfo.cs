@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AppCheckSizeFolder")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0bfe6ab391fb5bf353bc36c33d53792e15c37c53")]
 [assembly: System.Reflection.AssemblyProductAttribute("AppCheckSizeFolder")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AppCheckSizeFolder")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

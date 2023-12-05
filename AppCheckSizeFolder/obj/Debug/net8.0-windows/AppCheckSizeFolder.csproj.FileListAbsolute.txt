@@ -1,0 +1,16 @@
+E:\Developer\ASP.NETc#\AppCheckSizeFolder\AppCheckSizeFolder\obj\Debug\net8.0-windows\AppCheckSizeFolder.Form1.resources
+E:\Developer\ASP.NETc#\AppCheckSizeFolder\AppCheckSizeFolder\obj\Debug\net8.0-windows\AppCheckSizeFolder.csproj.GenerateResource.cache
+E:\Developer\ASP.NETc#\AppCheckSizeFolder\AppCheckSizeFolder\obj\Debug\net8.0-windows\AppCheckSizeFolder.GeneratedMSBuildEditorConfig.editorconfig
+E:\Developer\ASP.NETc#\AppCheckSizeFolder\AppCheckSizeFolder\obj\Debug\net8.0-windows\AppCheckSizeFolder.AssemblyInfoInputs.cache
+E:\Developer\ASP.NETc#\AppCheckSizeFolder\AppCheckSizeFolder\obj\Debug\net8.0-windows\AppCheckSizeFolder.AssemblyInfo.cs
+E:\Developer\ASP.NETc#\AppCheckSizeFolder\AppCheckSizeFolder\obj\Debug\net8.0-windows\AppCheckSizeFolder.csproj.CoreCompileInputs.cache
+E:\Developer\ASP.NETc#\AppCheckSizeFolder\AppCheckSizeFolder\bin\Debug\net8.0-windows\AppCheckSizeFolder.exe
+E:\Developer\ASP.NETc#\AppCheckSizeFolder\AppCheckSizeFolder\bin\Debug\net8.0-windows\AppCheckSizeFolder.deps.json
+E:\Developer\ASP.NETc#\AppCheckSizeFolder\AppCheckSizeFolder\bin\Debug\net8.0-windows\AppCheckSizeFolder.runtimeconfig.json
+E:\Developer\ASP.NETc#\AppCheckSizeFolder\AppCheckSizeFolder\bin\Debug\net8.0-windows\AppCheckSizeFolder.dll
+E:\Developer\ASP.NETc#\AppCheckSizeFolder\AppCheckSizeFolder\bin\Debug\net8.0-windows\AppCheckSizeFolder.pdb
+E:\Developer\ASP.NETc#\AppCheckSizeFolder\AppCheckSizeFolder\obj\Debug\net8.0-windows\AppCheckSizeFolder.dll
+E:\Developer\ASP.NETc#\AppCheckSizeFolder\AppCheckSizeFolder\obj\Debug\net8.0-windows\refint\AppCheckSizeFolder.dll
+E:\Developer\ASP.NETc#\AppCheckSizeFolder\AppCheckSizeFolder\obj\Debug\net8.0-windows\AppCheckSizeFolder.pdb
+E:\Developer\ASP.NETc#\AppCheckSizeFolder\AppCheckSizeFolder\obj\Debug\net8.0-windows\AppCheckSizeFolder.genruntimeconfig.cache
+E:\Developer\ASP.NETc#\AppCheckSizeFolder\AppCheckSizeFolder\obj\Debug\net8.0-windows\ref\AppCheckSizeFolder.dll

@@ -65,7 +65,7 @@
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(718, 525);
             listBox1.TabIndex = 3;
-            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            listBox1.MouseClick += listBox1_MouseClick;
             listBox1.MouseDoubleClick += listBox1_MouseDoubleClick;
             // 
             // textBox1
@@ -102,6 +102,7 @@
             listBox2.Name = "listBox2";
             listBox2.Size = new Size(204, 525);
             listBox2.TabIndex = 6;
+            listBox2.MouseClick += listBox2_MouseClick;
             // 
             // button3
             // 

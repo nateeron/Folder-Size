@@ -12,16 +12,16 @@ namespace AppCheckSizeFolder
         public Form1()
         {
             InitializeComponent();
-            string tx =  Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string tx = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             textBox1.Text = tx;
             listBox1.Items.Add(tx);
         }
-        // Update 3
+        // Update 4
 
-        
+
         private async Task GetTotalFolderSize(string folderPath)
         {
-           
+
             try
             {
 
@@ -32,7 +32,7 @@ namespace AppCheckSizeFolder
                 if (Directory.Exists(folderPath))
                 {
                     string[] subfolderssss = Directory.GetFileSystemEntries(folderPath);
-                  
+
                     // Get all subfolders in the folder
                     string[] subfolders = Directory.GetDirectories(folderPath);
                     listBox1.Items.Clear();
@@ -47,7 +47,7 @@ namespace AppCheckSizeFolder
                     progressBar1.Maximum = (int)(count * percen);
                     double load = 0.00;
                     List<string> currentItems = listBox1.Items.Cast<string>().ToList();
-                   
+
                     foreach (string subfolder in subfolderssss)
                     {
                         stopwatch.Restart();
@@ -80,7 +80,7 @@ namespace AppCheckSizeFolder
                             folderItems2.Add(Tuple.Create($"{FormatBytes(Size)}", dblSByte));
                             Debug.WriteLine($"Folder: {subfolder}, Size: {FormatBytes(Size)}");
                             load = load + percen;
-                            
+
                             progressBar1.Value = (int)(load);
                         }
                         await Task.Run(() => settext(subfolder));
@@ -152,12 +152,12 @@ namespace AppCheckSizeFolder
             if (label1.InvokeRequired)
             {
                 // If this method is called from a non-UI thread, invoke it on the UI thread
-                label1.Invoke(new MethodInvoker(() => label1.Text = "Loading...."+s));
+                label1.Invoke(new MethodInvoker(() => label1.Text = "Loading...." + s));
             }
             else
             {
                 // If this method is called from the UI thread, update the label directly
-                label1.Text = "Loading...." +s;
+                label1.Text = "Loading...." + s;
             }
         }
         static async Task<long> GetFileSize(string filePath)
@@ -258,15 +258,25 @@ namespace AppCheckSizeFolder
             {
                 Process.Start("explorer.exe", $"\"{path}\"");
             }
-
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void listBox1_MouseClick(object sender, MouseEventArgs e)
         {
             // Get the selected item from the ListBox
             int selectedIndex = listBox1.SelectedIndex;
-            listBox2.SetSelected(selectedIndex, true);
-          
+            int selectedIndex2 = listBox2.Items.Count;
+            if (selectedIndex2 > 0)
+                listBox2.SetSelected(selectedIndex, true);
+        }
+
+        private void listBox2_MouseClick(object sender, MouseEventArgs e)
+        {
+            // Get the selected item from the ListBox
+            int selectedIndex2 = listBox2.SelectedIndex;
+            int selectedIndex1 = listBox1.Items.Count;
+            if (selectedIndex1 > 0 && selectedIndex2 < listBox1.Items.Count)
+                listBox1.SetSelected(selectedIndex2, true);
         }
     }
 }

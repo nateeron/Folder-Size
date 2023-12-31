@@ -12,21 +12,27 @@ namespace AppCheckSizeFolder
         public Form1()
         {
             InitializeComponent();
+            string tx = "E:\\SteamLibrary\\steamapps\\common";
+            textBox1.Text = tx;
+            listBox1.Items.Add(tx);
         }
         // Update 3
 
-        private void GetTotalFolderSize(string folderPath)
+        
+        private async Task GetTotalFolderSize(string folderPath)
         {
+           
             try
             {
 
+                Stopwatch stopwatch = new Stopwatch();
                 long totalSize = 0;
                 long Size = 0;
                 // Check if the folder exists
                 if (Directory.Exists(folderPath))
                 {
                     string[] subfolderssss = Directory.GetFileSystemEntries(folderPath);
-
+                  
                     // Get all subfolders in the folder
                     string[] subfolders = Directory.GetDirectories(folderPath);
                     listBox1.Items.Clear();
@@ -34,32 +40,53 @@ namespace AppCheckSizeFolder
                     List<Tuple<string, double>> folderItems = new List<Tuple<string, double>>();
                     List<Tuple<string, double>> folderItems2 = new List<Tuple<string, double>>();
                     // Iterate through each subfolder and calculate its size
+                    double count = subfolderssss.Length;
+                    double percen = 100 / count;
+                    progressBar1.Visible = true;
+                    progressBar1.Minimum = 0;
+                    progressBar1.Maximum = (int)(count * percen);
+                    double load = 0.00;
+                    List<string> currentItems = listBox1.Items.Cast<string>().ToList();
+                   
                     foreach (string subfolder in subfolderssss)
                     {
+                        stopwatch.Restart();
+                        stopwatch.Start();
+                        Debug.WriteLine($"STAT #1 : {stopwatch.ElapsedMilliseconds}, Size: {subfolder}");
+                        await Task.Run(() => settext(subfolder));
                         if (File.Exists(subfolder))
                         {
-                            totalSize += GetFileSize(subfolder);
-                            Size = GetFileSize(subfolder);
+                            await Task.Run(() => settext(subfolder));
+                            totalSize += await GetFileSize(subfolder);
+                            Size = await GetFileSize(subfolder);
                             double dblSByte = Size;
-
+                            listBox2.Items.Add(FormatBytes(Size));
                             folderItems.Add(Tuple.Create($"{subfolder}", dblSByte));
                             folderItems2.Add(Tuple.Create($"{FormatBytes(Size)}", dblSByte));
-                            Debug.WriteLine($"File: {subfolder}, Size: {FormatBytes(GetFileSize(subfolder))}");
+                            Debug.WriteLine($"File: {subfolder}, Size: {FormatBytes(Size)}");
+                            load = load + percen;
+                            await Task.Run(() => settext(load.ToString()));
+                            progressBar1.Value = (int)(load);
+
                         }
                         else if (Directory.Exists(subfolder))
                         {
-                            totalSize += GetFolderSize(subfolder);
-                            Size = GetFolderSize(subfolder);
+                            await Task.Run(() => settext(subfolder));
+                            totalSize += await GetFolderSize(subfolder);
+                            Size = await GetFolderSize(subfolder);
                             double dblSByte = Size;
-
+                            listBox2.Items.Add(FormatBytes(Size));
                             folderItems.Add(Tuple.Create($"{subfolder}", dblSByte));
                             folderItems2.Add(Tuple.Create($"{FormatBytes(Size)}", dblSByte));
-                            Debug.WriteLine($"Folder: {subfolder}, Size: {FormatBytes(GetFolderSize(subfolder))}");
+                            Debug.WriteLine($"Folder: {subfolder}, Size: {FormatBytes(Size)}");
+                            load = load + percen;
+                            
+                            progressBar1.Value = (int)(load);
                         }
-
-
-
-
+                        await Task.Run(() => settext(subfolder));
+                        stopwatch.Stop();
+                        Debug.WriteLine($"Stop #({load}%) : {stopwatch.ElapsedMilliseconds / 1000}, Size: {subfolder}");
+                        //Application.DoEvents();
                         //listBox1.Items.Add($"{FormatBytes(totalSize)} | Size of folder {subfolder}");
                         //listBox1.Sorted = true;
                         //Debug.WriteLine($"Size of folder {folderPath}: {FormatBytes(totalSize)}");
@@ -68,13 +95,22 @@ namespace AppCheckSizeFolder
                     folderItems = folderItems.OrderBy(item => item.Item2).ToList();
                     folderItems2 = folderItems2.OrderBy(item => item.Item2).ToList();
                     int i = 0;
+
+                    listBox1.Items.Clear();
+                    listBox2.Items.Clear();
                     foreach (var item in folderItems)
                     {
                         listBox1.Items.Add(item.Item1);
                         listBox2.Items.Add(folderItems2[i].Item1);
                         i++;
                     }
+
+
+                    label1.Text = "Complete.";
                     listBox2.Items.Add($"Total Size : {FormatBytes(totalSize)}");
+                    label_size.Text = $"Total Size : {FormatBytes(totalSize)}";
+
+                    progressBar1.Visible = false;
                 }
 
             }
@@ -84,7 +120,7 @@ namespace AppCheckSizeFolder
             }
         }
 
-        static long GetFolderSize(string folderPath)
+        static async Task<long> GetFolderSize(string folderPath)
         {
             try
             {
@@ -110,7 +146,21 @@ namespace AppCheckSizeFolder
                 return -1; // Return -1 to indicate an error
             }
         }
-        static long GetFileSize(string filePath)
+        public async void settext(string s)
+        {
+            // Assuming label1 is a control on the form
+            if (label1.InvokeRequired)
+            {
+                // If this method is called from a non-UI thread, invoke it on the UI thread
+                label1.Invoke(new MethodInvoker(() => label1.Text = "Loading...."+s));
+            }
+            else
+            {
+                // If this method is called from the UI thread, update the label directly
+                label1.Text = "Loading...." +s;
+            }
+        }
+        static async Task<long> GetFileSize(string filePath)
         {
             try
             {
@@ -149,22 +199,25 @@ namespace AppCheckSizeFolder
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
 
+            label1.Text = "Loading...";
+            label_size.Text = "";
             string folderPath = textBox1.Text;
             if (folderPath != null || folderPath != "")
             {
-                GetTotalFolderSize(folderPath);
+                await GetTotalFolderSize(folderPath);
             }
 
             //Debug.WriteLine($"Size of folder {folderPath}: {FormatBytes(folderSize)}");
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-
+            label1.Text = "Loading...";
+            label_size.Text = "";
             // Set the initial directory (optional)
             //folderBrowserDialog.SelectedPath = @"C:\";
 
@@ -180,7 +233,7 @@ namespace AppCheckSizeFolder
                 // Display the selected folder path in a MessageBox (you can do other operations here)
                 //MessageBox.Show($"Selected Folder: {selectedFolderPath}");
                 textBox1.Text = selectedFolderPath;
-                GetTotalFolderSize(selectedFolderPath);
+                await GetTotalFolderSize(selectedFolderPath);
 
             }
         }
@@ -201,10 +254,19 @@ namespace AppCheckSizeFolder
         private void button3_Click(object sender, EventArgs e)
         {
             string path = textBox1.Text;
-            if (path != null) {
+            if (path != null)
+            {
                 Process.Start("explorer.exe", $"\"{path}\"");
             }
-           
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Get the selected item from the ListBox
+            int selectedIndex = listBox1.SelectedIndex;
+            listBox2.SetSelected(selectedIndex, true);
+          
         }
     }
 }

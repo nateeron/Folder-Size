@@ -12,7 +12,7 @@ namespace AppCheckSizeFolder
         public Form1()
         {
             InitializeComponent();
-            string tx = "E:\\SteamLibrary\\steamapps\\common";
+            string tx =  Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             textBox1.Text = tx;
             listBox1.Items.Add(tx);
         }

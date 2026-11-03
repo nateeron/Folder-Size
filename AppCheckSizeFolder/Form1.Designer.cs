@@ -38,6 +38,10 @@
             label1 = new Label();
             progressBar1 = new ProgressBar();
             label_size = new Label();
+            label2 = new Label();
+            bt_back = new Button();
+            bt_forward = new Button();
+            treeView1 = new TreeView();
             SuspendLayout();
             // 
             // button1
@@ -61,9 +65,9 @@
             listBox1.ForeColor = SystemColors.ControlLightLight;
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 25;
-            listBox1.Location = new Point(12, 99);
+            listBox1.Location = new Point(268, 99);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(718, 525);
+            listBox1.Size = new Size(462, 525);
             listBox1.TabIndex = 3;
             listBox1.MouseClick += listBox1_MouseClick;
             listBox1.MouseDoubleClick += listBox1_MouseDoubleClick;
@@ -72,10 +76,11 @@
             // 
             textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textBox1.Font = new Font("Calibri", 14.25F);
-            textBox1.Location = new Point(12, 12);
+            textBox1.Location = new Point(100, 12);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(842, 31);
+            textBox1.Size = new Size(754, 31);
             textBox1.TabIndex = 4;
+            textBox1.KeyPress += textBox1_KeyPress;
             // 
             // button2
             // 
@@ -147,12 +152,59 @@
             label_size.Text = "..";
             label_size.TextAlign = ContentAlignment.MiddleRight;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = SystemColors.ControlLightLight;
+            label2.Location = new Point(268, 81);
+            label2.Name = "label2";
+            label2.Size = new Size(177, 15);
+            label2.TabIndex = 10;
+            label2.Text = "Ctrl+DoubleClick to OpenFolder";
+            // 
+            // bt_back
+            // 
+            bt_back.Location = new Point(12, 17);
+            bt_back.Name = "bt_back";
+            bt_back.Size = new Size(30, 23);
+            bt_back.TabIndex = 11;
+            bt_back.Text = "◀";
+            bt_back.UseVisualStyleBackColor = true;
+            bt_back.Click += bt_back_Click;
+            // 
+            // bt_forward
+            // 
+            bt_forward.Location = new Point(48, 17);
+            bt_forward.Name = "bt_forward";
+            bt_forward.Size = new Size(30, 23);
+            bt_forward.TabIndex = 11;
+            bt_forward.Text = "▶";
+            bt_forward.UseVisualStyleBackColor = true;
+            bt_forward.Click += bt_forward_Click;
+            // 
+            // treeView1
+            // 
+            treeView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            treeView1.BackColor = Color.FromArgb(64, 64, 64);
+            treeView1.BorderStyle = BorderStyle.None;
+            treeView1.ForeColor = SystemColors.ControlLightLight;
+            treeView1.Location = new Point(12, 99);
+            treeView1.Name = "treeView1";
+            treeView1.Size = new Size(250, 525);
+            treeView1.TabIndex = 12;
+            treeView1.BeforeExpand += treeView1_BeforeExpand;
+            treeView1.NodeMouseDoubleClick += treeView1_NodeMouseDoubleClick;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.WindowFrame;
             ClientSize = new Size(946, 694);
+            Controls.Add(treeView1);
+            Controls.Add(bt_forward);
+            Controls.Add(bt_back);
+            Controls.Add(label2);
             Controls.Add(progressBar1);
             Controls.Add(label_size);
             Controls.Add(label1);
@@ -165,6 +217,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             Text = "Folder Size V.1.0.1";
+            Click += Form1_Click;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -180,5 +233,9 @@
         private Label label1;
         private ProgressBar progressBar1;
         private Label label_size;
+        private Label label2;
+        private Button bt_back;
+        private Button bt_forward;
+        private TreeView treeView1;
     }
 }
